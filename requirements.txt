@@ -1,0 +1,30 @@
+# Core dependencies for NVIDIA Parakeet CTC 1.1B transcription
+# Tested on DGX Spark (GB10, aarch64, CUDA 13.0)
+
+# PyTorch nightly required for Blackwell (sm_121) GPU support
+# Install manually: pip install --pre torch --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu128
+# torch>=2.12.0
+
+# Transformers from source required for parakeet_ctc model support
+# Install manually: pip install git+https://github.com/huggingface/transformers.git
+# transformers>=5.3.0
+
+librosa>=0.11.0
+numpy>=2.4.0
+soundfile>=0.13.0
+
+# --- Phase 2: Speaker Diarization (optional, for --output-format diarized) ---
+# torchaudio nightly (must match torch version):
+#   pip install --pre torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+# pyannote-audio (install without deps to avoid version conflicts):
+#   pip install pyannote-audio==3.1.1 --no-deps
+# pyannote dependencies:
+#   pip install asteroid-filterbanks einops "lightning>=2.0.1" speechbrain rich semver torch-audiomentations
+#
+# After installing, run these patch scripts (with venv Python):
+#   python patch_pyannote.py       # Fixes 9 compatibility issues
+#   python patch_torchaudio_load.py  # Replaces torchaudio.load/info with soundfile
+#
+# HuggingFace token required — accept license terms for:
+#   https://huggingface.co/pyannote/segmentation-3.0
+#   https://huggingface.co/pyannote/speaker-diarization-3.1

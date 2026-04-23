@@ -1,0 +1,25 @@
+# Audio files (large, stored on NAS)
+input/
+*.mp3
+
+# Output transcripts (generated)
+output/
+output_v2_test/
+
+# Model backups (large, stored on NAS)
+models/
+
+# Logs
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Temporary test scripts
+test_*.py
+accept_models.py
+
+# OS
+.DS_Store
